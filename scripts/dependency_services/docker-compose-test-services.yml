@@ -1,7 +1,7 @@
 version: '3.5'
 services:
   postgres:
-    image: postgres
+    image: postgres@sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280
     ports:
       - 127.0.0.1::5432
     volumes:
@@ -20,7 +20,7 @@ services:
     stdin_open: true
     tty: true
   redis:
-    image: redis
+    image: redis@sha256:298e5b3bc566bade82f46ad5511777a4a07a294097ce16ada2f6a42be5239df5
     ports:
       - 127.0.0.1::6379
       - 127.0.0.1::6380
@@ -33,12 +33,12 @@ services:
       timeout: 10s
       retries: 10
   grpcbin:
-    image: moul/grpcbin
+    image: moul/grpcbin@sha256:bd8f2ffdd02d0849fad2d1c754eff4402c867e7a3e0552b8992f4590f5687d20
     ports:
       - 127.0.0.1::9000
       - 127.0.0.1::9001
   zipkin:
-    image: openzipkin/zipkin:2.19
+    image: openzipkin/zipkin:2.19@sha256:4a9b22c7ae3b2f691ad2eb02ab17d6dd86273922264987c7c176d12a867e5c6e
     ports:
       - 127.0.0.1::9411
 

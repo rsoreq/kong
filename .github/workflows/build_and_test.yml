@@ -46,7 +46,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres:13
+        image: postgres:13@sha256:4689940c683801b4ab839ab3b0a0a3555a5fe425371422310944e89eca7d8068
         env:
           POSTGRES_USER: kong
           POSTGRES_DB: kong
@@ -57,11 +57,11 @@ jobs:
 
     steps:
     - name: Checkout Kong source code
-      uses: actions/checkout@v3
+      uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3
 
     - name: Lookup build cache
       id: cache-deps
-      uses: actions/cache@v3
+      uses: actions/cache@6f8efc29b200d32929f49075959781ed54ec270c # v3
       with:
         path: ${{ env.BUILD_ROOT }}
         key: ${{ needs.build.outputs.cache-key }}
@@ -105,7 +105,7 @@ jobs:
           $TEST_CMD
 
     - name: Archive coverage stats file
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@ff15f0306b3f739f7b6fd43fb5d26cd321bd4de5 # v3
       if: ${{ always() && (inputs.coverage == true || github.event_name == 'schedule') }}
       with:
         name: luacov-stats-out-${{ github.job }}-${{ github.run_id }}
@@ -131,7 +131,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres:13
+        image: postgres:13@sha256:4689940c683801b4ab839ab3b0a0a3555a5fe425371422310944e89eca7d8068
         env:
           POSTGRES_USER: kong
           POSTGRES_DB: kong
@@ -141,13 +141,13 @@ jobs:
         options: --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 8
 
       grpcbin:
-        image: kong/grpcbin
+        image: kong/grpcbin@sha256:2e85538340e419415c81b6368e0e2b6a73a2b87b885a76029dc49ca462aacc6d
         ports:
           - 15002:9000
           - 15003:9001
 
       redis:
-        image: redis
+        image: redis@sha256:298e5b3bc566bade82f46ad5511777a4a07a294097ce16ada2f6a42be5239df5
         ports:
           - 6379:6379
           - 6380:6380
@@ -155,17 +155,17 @@ jobs:
           --name kong_redis
 
       zipkin:
-        image: openzipkin/zipkin:2.19
+        image: openzipkin/zipkin:2.19@sha256:4a9b22c7ae3b2f691ad2eb02ab17d6dd86273922264987c7c176d12a867e5c6e
         ports:
           - 9411:9411
 
     steps:
     - name: Checkout Kong source code
-      uses: actions/checkout@v3
+      uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3
 
     - name: Lookup build cache
       id: cache-deps
-      uses: actions/cache@v3
+      uses: actions/cache@6f8efc29b200d32929f49075959781ed54ec270c # v3
       with:
         path: ${{ env.BUILD_ROOT }}
         key: ${{ needs.build.outputs.cache-key }}
@@ -242,7 +242,7 @@ jobs:
           .ci/run_tests.sh
 
     - name: Archive coverage stats file
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@ff15f0306b3f739f7b6fd43fb5d26cd321bd4de5 # v3
       if: ${{ always() && (inputs.coverage == true || github.event_name == 'schedule') }}
       with:
         name: luacov-stats-out-${{ github.job }}-${{ github.run_id }}-${{ matrix.suite }}-${{ contains(matrix.split, 'first') && '1' || '2' }}
@@ -262,18 +262,18 @@ jobs:
 
     services:
       grpcbin:
-        image: moul/grpcbin
+        image: moul/grpcbin@sha256:bd8f2ffdd02d0849fad2d1c754eff4402c867e7a3e0552b8992f4590f5687d20
         ports:
           - 15002:9000
           - 15003:9001
 
     steps:
     - name: Checkout Kong source code
-      uses: actions/checkout@v3
+      uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3
 
     - name: Lookup build cache
       id: cache-deps
-      uses: actions/cache@v3
+      uses: actions/cache@6f8efc29b200d32929f49075959781ed54ec270c # v3
       with:
         path: ${{ env.BUILD_ROOT }}
         key: ${{ needs.build.outputs.cache-key }}
@@ -315,7 +315,7 @@ jobs:
           .ci/run_tests.sh
 
     - name: Archive coverage stats file
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@ff15f0306b3f739f7b6fd43fb5d26cd321bd4de5 # v3
       if: ${{ always() && (inputs.coverage == true || github.event_name == 'schedule') }}
       with:
         name: luacov-stats-out-${{ github.job }}-${{ github.run_id }}
@@ -335,11 +335,11 @@ jobs:
 
     steps:
     - name: Checkout Kong source code
-      uses: actions/checkout@v3
+      uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3
 
     - name: Lookup build cache
       id: cache-deps
-      uses: actions/cache@v3
+      uses: actions/cache@6f8efc29b200d32929f49075959781ed54ec270c # v3
       with:
         path: ${{ env.BUILD_ROOT }}
         key: ${{ needs.build.outputs.cache-key }}
@@ -367,7 +367,7 @@ jobs:
           .ci/run_tests.sh
 
     - name: Archive coverage stats file
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@ff15f0306b3f739f7b6fd43fb5d26cd321bd4de5 # v3
       if: ${{ always() && (inputs.coverage == true || github.event_name == 'schedule') }}
       with:
         name: luacov-stats-out-${{ github.job }}-${{ github.run_id }}
@@ -388,7 +388,7 @@ jobs:
 
     steps:
     - name: Checkout source code
-      uses: actions/checkout@v3
+      uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3
 
     - name: Install requirements
       run: |
@@ -397,7 +397,7 @@ jobs:
         sudo luarocks install luafilesystem
 
     # Download all archived coverage stats files
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3
 
     - name: Stats aggregation
       shell: bash

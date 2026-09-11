@@ -23,7 +23,7 @@ jobs:
 
     steps:
     - name: Checkout Kong source code
-      uses: actions/checkout@v3
+      uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3
 
     # these aren't necessarily used by all tests, but building them here will
     # ensures that we have a warm cache when other tests _do_ need to build the
@@ -37,7 +37,7 @@ jobs:
 
     - name: Lookup build cache
       id: cache-deps
-      uses: actions/cache@v3
+      uses: actions/cache@6f8efc29b200d32929f49075959781ed54ec270c # v3
       with:
         path: ${{ env.BUILD_ROOT }}
         key: ${{ steps.cache-key.outputs.cache-key }}
@@ -73,7 +73,7 @@ jobs:
         luarocks config
 
     - name: Bazel Outputs
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@ff15f0306b3f739f7b6fd43fb5d26cd321bd4de5 # v3
       if: failure()
       with:
         name: bazel-outputs

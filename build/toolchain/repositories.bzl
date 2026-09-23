@@ -23,7 +23,7 @@ filegroup(
 def toolchain_repositories():
     http_archive(
         name = "x86_64-alpine-linux-musl-gcc-11",
-        url = "https://github.com/Kong/crosstool-ng-actions/releases/download/0.4.0/x86_64-alpine-linux-musl-gcc-11.tar.gz",
+        url = "https://github.com/Kong/crosstool-ng-actions/releases/download/0.9.0/x86_64-alpine-linux-musl-gcc-11.tar.gz",
         sha256 = "4fbc9a48f1f7ace6d2a19a1feeac1f69cf86ce8ece40b101e351d1f703b3560c",
         strip_prefix = "x86_64-alpine-linux-musl",
         build_file_content = build_file_content,

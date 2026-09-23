@@ -38,7 +38,7 @@ services:
       - 127.0.0.1::9000
       - 127.0.0.1::9001
   zipkin:
-    image: openzipkin/zipkin:2.19
+    image: openzipkin/zipkin:3.6@sha256:d17e856dcbba7ffeefbbfc252f89ab78a4ab6faed47e646d46daad78f91b5ee2
     ports:
       - 127.0.0.1::9411
 

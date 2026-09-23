@@ -55,8 +55,8 @@ def toolchain_repositories():
 
     http_archive(
         name = "aarch64-aws2023-linux-gnu-gcc-11",
-        url = "https://github.com/Kong/crosstool-ng-actions/releases/download/0.5.0/aarch64-aws2023-linux-gnu-glibc-2.34-gcc-11.tar.gz",
-        sha256 = "01498b49c20255dd3d5da733fa5d60b5dad4b1cdd55e50552d8f2867f3d82e98",
+        url = "https://github.com/Kong/crosstool-ng-actions/releases/download/0.9.0/aarch64-aws2023-linux-gnu-glibc-2.34-gcc-11.tar.gz",
+        sha256 = "e3ac250bb6ad32ea69f7c1e174143ba1fdbcc21916a76b2aca510cf43f128327",
         strip_prefix = "aarch64-aws2023-linux-gnu",
         build_file_content = build_file_content,
     )

@@ -56,8 +56,8 @@ def kong_github_repositories():
 def protoc_repositories():
     http_archive(
         name = "protoc",
-        url = "https://github.com/protocolbuffers/protobuf/releases/download/v3.19.0/protoc-3.19.0-linux-x86_64.zip",
-        sha256 = "2994b7256f7416b90ad831dbf76a27c0934386deb514587109f39141f2636f37",
+        url = "https://github.com/protocolbuffers/protobuf/releases/download/v3.20.3/protoc-3.20.3-linux-x86_64.zip",
+        sha256 = "44a6b498e996b845edef83864734c0e52f42197e85c9d567af55f4e3ff09d755",
         build_file_content = """
 filegroup(
     name = "all_srcs",

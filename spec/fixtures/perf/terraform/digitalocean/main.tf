@@ -13,7 +13,7 @@ terraform {
       version = "~> 2.0"
     }
     tls = {
-      version = "~> 3.4"
+      version = "~> 4.0"
     }
     random = {
       version = "~> 3.3"

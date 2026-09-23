@@ -47,8 +47,8 @@ def toolchain_repositories():
 
     http_archive(
         name = "aarch64-rhel8-linux-gnu-gcc-8",
-        url = "https://github.com/Kong/crosstool-ng-actions/releases/download/0.5.0/aarch64-rhel8-linux-gnu-glibc-2.28-gcc-8.tar.gz",
-        sha256 = "7a9a28ccab6d3b068ad49b2618276707e0a31b437ad010c8969ba8660ddf63fb",
+        url = "https://github.com/Kong/crosstool-ng-actions/releases/download/0.9.0/aarch64-rhel8-linux-gnu-glibc-2.28-gcc-8.tar.gz",
+        sha256 = "bb870d88bf6a363c91f663263a33bd2de0f8ce74d4a6467011f248bcd24e7c32",
         strip_prefix = "aarch64-rhel8-linux-gnu",
         build_file_content = build_file_content,
     )

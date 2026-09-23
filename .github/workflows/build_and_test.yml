@@ -46,7 +46,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres:13
+        image: postgres:18@sha256:86c951e05bf56c93d95d397747fb8820ac76cc3bedb78f43abd83eedbe3666ae
         env:
           POSTGRES_USER: kong
           POSTGRES_DB: kong
@@ -131,7 +131,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres:13
+        image: postgres:18@sha256:86c951e05bf56c93d95d397747fb8820ac76cc3bedb78f43abd83eedbe3666ae
         env:
           POSTGRES_USER: kong
           POSTGRES_DB: kong

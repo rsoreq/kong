@@ -63,8 +63,8 @@ def toolchain_repositories():
 
     http_archive(
         name = "aarch64-aws2-linux-gnu-gcc-7",
-        url = "https://github.com/Kong/crosstool-ng-actions/releases/download/0.5.0/aarch64-aws2-linux-gnu-glibc-2.26-gcc-7.tar.gz",
-        sha256 = "9a8d0bb84c3eea7b662192bf44aaf33a76c9c68848a68a544a91ab90cd8cba60",
+        url = "https://github.com/Kong/crosstool-ng-actions/releases/download/0.9.0/aarch64-aws2-linux-gnu-glibc-2.26-gcc-7.tar.gz",
+        sha256 = "e15bf4c848c7a2af14a069d2ff68fc3af70d51b8c1f87264946adf2f4455a07c",
         strip_prefix = "aarch64-aws2-linux-gnu",
         build_file_content = build_file_content,
     )

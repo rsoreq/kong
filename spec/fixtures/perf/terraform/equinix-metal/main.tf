@@ -10,7 +10,7 @@ terraform {
     }
     equinix = {
       source = "equinix/equinix"
-      version = "~> 1.6"
+      version = "~> 5.0"
     }
     tls = {
       version = "~> 3.4"

@@ -155,7 +155,7 @@ jobs:
           --name kong_redis
 
       zipkin:
-        image: openzipkin/zipkin:2.19
+        image: openzipkin/zipkin:2.27@sha256:c138164b0e22ba0f49e4b142d10a8494d892b780bc89f9c04f8186d18fecdb60
         ports:
           - 9411:9411
 

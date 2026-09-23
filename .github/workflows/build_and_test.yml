@@ -105,7 +105,7 @@ jobs:
           $TEST_CMD
 
     - name: Archive coverage stats file
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
       if: ${{ always() && (inputs.coverage == true || github.event_name == 'schedule') }}
       with:
         name: luacov-stats-out-${{ github.job }}-${{ github.run_id }}
@@ -242,7 +242,7 @@ jobs:
           .ci/run_tests.sh
 
     - name: Archive coverage stats file
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
       if: ${{ always() && (inputs.coverage == true || github.event_name == 'schedule') }}
       with:
         name: luacov-stats-out-${{ github.job }}-${{ github.run_id }}-${{ matrix.suite }}-${{ contains(matrix.split, 'first') && '1' || '2' }}
@@ -315,7 +315,7 @@ jobs:
           .ci/run_tests.sh
 
     - name: Archive coverage stats file
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
       if: ${{ always() && (inputs.coverage == true || github.event_name == 'schedule') }}
       with:
         name: luacov-stats-out-${{ github.job }}-${{ github.run_id }}
@@ -367,7 +367,7 @@ jobs:
           .ci/run_tests.sh
 
     - name: Archive coverage stats file
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
       if: ${{ always() && (inputs.coverage == true || github.event_name == 'schedule') }}
       with:
         name: luacov-stats-out-${{ github.job }}-${{ github.run_id }}
@@ -397,7 +397,7 @@ jobs:
         sudo luarocks install luafilesystem
 
     # Download all archived coverage stats files
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
 
     - name: Stats aggregation
       shell: bash

@@ -39,8 +39,8 @@ def toolchain_repositories():
 
     http_archive(
         name = "aarch64-rhel9-linux-gnu-gcc-11",
-        url = "https://github.com/Kong/crosstool-ng-actions/releases/download/0.5.0/aarch64-rhel9-linux-gnu-glibc-2.34-gcc-11.tar.gz",
-        sha256 = "40fcf85e8315869621573512499aa3e2884283e0054dfefc2bad3bbf21b954c0",
+        url = "https://github.com/Kong/crosstool-ng-actions/releases/download/0.9.0/aarch64-rhel9-linux-gnu-glibc-2.34-gcc-11.tar.gz",
+        sha256 = "99d9aa2ad62abe4891d3cd840c3e63afbc9a5cc7c59c95c213735c5728aaed8c",
         strip_prefix = "aarch64-rhel9-linux-gnu",
         build_file_content = build_file_content,
     )

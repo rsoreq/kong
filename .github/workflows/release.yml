@@ -124,7 +124,7 @@ jobs:
     - name: Cache Git
       id: cache-git
       if: (matrix.package == 'rpm' || matrix.image == 'debian:10') && matrix.image != ''
-      uses: actions/cache@v3
+      uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
       with:
         path: /usr/local/git
         key: ${{ matrix.label }}-git-2.41.0
@@ -185,7 +185,7 @@ jobs:
     - name: Cache Packages
       id: cache-deps
       if: env.GHA_CACHE == 'true'
-      uses: actions/cache@v3
+      uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
       with:
         path: bazel-bin/pkg
         key: ${{ steps.cache-key.outputs.cache-key }}

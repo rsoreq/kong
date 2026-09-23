@@ -37,7 +37,7 @@ jobs:
 
     - name: Lookup build cache
       id: cache-deps
-      uses: actions/cache@v3
+      uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
       with:
         path: ${{ env.BUILD_ROOT }}
         key: ${{ steps.cache-key.outputs.cache-key }}

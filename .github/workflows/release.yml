@@ -344,7 +344,7 @@ jobs:
 
     - name: Set up QEMU
       if: matrix.docker-platforms != ''
-      uses: docker/setup-qemu-action@v2
+      uses: docker/setup-qemu-action@99012661954931238ded8c8b007157a8430204e1 # v4
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2

@@ -31,7 +31,7 @@ def toolchain_repositories():
 
     http_archive(
         name = "aarch64-alpine-linux-musl-gcc-11",
-        url = "https://github.com/Kong/crosstool-ng-actions/releases/download/0.4.0/aarch64-alpine-linux-musl-gcc-11.tar.gz",
+        url = "https://github.com/Kong/crosstool-ng-actions/releases/download/0.9.0/aarch64-alpine-linux-musl-gcc-11.tar.gz",
         sha256 = "abd7003fc4aa6d533c5aad97a5726040137f580026b1db78d3a8059a69c3d45b",
         strip_prefix = "aarch64-alpine-linux-musl",
         build_file_content = build_file_content,

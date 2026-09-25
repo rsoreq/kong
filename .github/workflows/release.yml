@@ -51,7 +51,7 @@ jobs:
       arch: ${{ steps.build-info.outputs.arch }}
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3
     - name: Build Info
       id: build-info
       run: |
@@ -124,7 +124,7 @@ jobs:
     - name: Cache Git
       id: cache-git
       if: (matrix.package == 'rpm' || matrix.image == 'debian:10') && matrix.image != ''
-      uses: actions/cache@v3
+      uses: actions/cache@6f8efc29b200d32929f49075959781ed54ec270c # v3
       with:
         path: /usr/local/git
         key: ${{ matrix.label }}-git-2.41.0
@@ -168,7 +168,7 @@ jobs:
         apt install -y wget libz-dev libssl-dev libcurl4-gnutls-dev libexpat1-dev sudo
 
     - name: Checkout Kong source code
-      uses: actions/checkout@v3
+      uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3
 
     - name: Swap git with https
       run: git config --global url."https://github".insteadOf git://github
@@ -185,7 +185,7 @@ jobs:
     - name: Cache Packages
       id: cache-deps
       if: env.GHA_CACHE == 'true'
-      uses: actions/cache@v3
+      uses: actions/cache@6f8efc29b200d32929f49075959781ed54ec270c # v3
       with:
         path: bazel-bin/pkg
         key: ${{ steps.cache-key.outputs.cache-key }}
@@ -262,7 +262,7 @@ jobs:
         tail -n500 bazel-out/**/*/CMake.log || true
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@ff15f0306b3f739f7b6fd43fb5d26cd321bd4de5 # v3
       with:
         name: ${{ matrix.label }}-packages
         path: bazel-bin/pkg
@@ -279,16 +279,16 @@ jobs:
         include: "${{ fromJSON(needs.metadata.outputs.matrix)['build-packages'] }}"
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3
 
     - name: Download artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3
       with:
         name: ${{ matrix.label }}-packages
         path: bazel-bin/pkg
 
     - name: Install Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@7f4fc3e22c37d6ff65e88745f38bd3157c663f7c # v4
       with:
         python-version: '3.11'
         cache: 'pip' # caching pip dependencies
@@ -311,17 +311,17 @@ jobs:
         include: "${{ fromJSON(needs.metadata.outputs.matrix)['build-images'] }}"
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3
 
     - name: Download artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3
       with:
         name: ${{ matrix.artifact-from }}-packages
         path: bazel-bin/pkg
 
     - name: Download artifact (alt)
       if: matrix.artifact-from-alt != ''
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3
       with:
         name: ${{ matrix.artifact-from-alt }}-packages
         path: bazel-bin/pkg
@@ -335,7 +335,7 @@ jobs:
 
     - name: Docker meta
       id: meta
-      uses: docker/metadata-action@v5
+      uses: docker/metadata-action@c299e40c65443455700f0fdfc63efafe5b349051 # v5
       with:
         images: ${{ needs.metadata.outputs.prerelease-docker-repository }}
         tags: |
@@ -344,10 +344,10 @@ jobs:
 
     - name: Set up QEMU
       if: matrix.docker-platforms != ''
-      uses: docker/setup-qemu-action@v2
+      uses: docker/setup-qemu-action@2b82ce82d56a2a04d2637cd93a637ae1b359c0a7 # v2
 
     - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
+      uses: docker/setup-buildx-action@885d1462b80bc1c1c7f0b00334ad271f09369c55 # v2
 
     - name: Set platforms
       id: docker_platforms_arg
@@ -373,7 +373,7 @@ jobs:
         echo "rpm_platform=$rpm_platform" >> $GITHUB_OUTPUT
 
     - name: Build Docker Image
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@ca052bb54ab0790a636c9b5f226502c73d547a25 # v5
       with:
         file: build/dockerfiles/${{ matrix.package }}.Dockerfile
         context: .
@@ -409,10 +409,10 @@ jobs:
         include: "${{ fromJSON(needs.metadata.outputs.matrix)['build-images'] }}"
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3
 
     - name: Install Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@7f4fc3e22c37d6ff65e88745f38bd3157c663f7c # v4
       with:
         python-version: '3.11'
         cache: 'pip' # caching pip dependencies
@@ -448,7 +448,7 @@ jobs:
       IMAGE: ${{ needs.metadata.outputs.prerelease-docker-repository }}:${{ github.sha }}-${{ matrix.label }}
     steps:
     - name: Install regctl
-      uses: regclient/actions/regctl-installer@main
+      uses: regclient/actions/regctl-installer@bb562fac724b7b37c17f19671df07fe34fabc376 # main
 
     - name: Login to Docker Hub
       if: ${{ env.HAS_ACCESS_TO_GITHUB_TOKEN }}
@@ -482,7 +482,7 @@ jobs:
     - name: Scan AMD64 Image digest
       id: sbom_action_amd64
       if: steps.image_manifest_metadata.outputs.amd64_sha != ''
-      uses: Kong/public-shared-actions/security-actions/scan-docker-image@v1
+      uses: Kong/public-shared-actions/security-actions/scan-docker-image@5c5396e3c5e1885bd4a937aeecbde4a1c2706d38 # v1
       with:
         asset_prefix: kong-${{ github.sha }}-${{ matrix.label }}-linux-amd64
         image: ${{ needs.metadata.outputs.prerelease-docker-repository }}:${{ github.sha }}-${{ matrix.label }}
@@ -490,7 +490,7 @@ jobs:
     - name: Scan ARM64 Image digest
       if: steps.image_manifest_metadata.outputs.manifest_list_exists == 'true' && steps.image_manifest_metadata.outputs.arm64_sha != ''
       id: sbom_action_arm64
-      uses: Kong/public-shared-actions/security-actions/scan-docker-image@v1
+      uses: Kong/public-shared-actions/security-actions/scan-docker-image@5c5396e3c5e1885bd4a937aeecbde4a1c2706d38 # v1
       with:
         asset_prefix: kong-${{ github.sha }}-${{ matrix.label }}-linux-arm64
         image: ${{ needs.metadata.outputs.prerelease-docker-repository }}:${{ github.sha }}-${{ matrix.label }}
@@ -511,7 +511,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres:13
+        image: postgres:13@sha256:4689940c683801b4ab839ab3b0a0a3555a5fe425371422310944e89eca7d8068
         env:
           POSTGRES_USER: kong
           POSTGRES_DB: kong
@@ -526,7 +526,7 @@ jobs:
       KONG_PROXY_URI: http://localhost:8000
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3
 
     - name: Login to Docker Hub
       uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v2.1.0
@@ -597,10 +597,10 @@ jobs:
         include: "${{ fromJSON(needs.metadata.outputs.matrix)['release-packages'] }}"
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3
 
     - name: Download artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3
       with:
         name: ${{ matrix.artifact-from }}-packages
         path: bazel-bin/pkg
@@ -661,7 +661,7 @@ jobs:
 
     - name: Docker meta
       id: meta
-      uses: docker/metadata-action@v5
+      uses: docker/metadata-action@c299e40c65443455700f0fdfc63efafe5b349051 # v5
       with:
         images: ${{ needs.metadata.outputs.docker-repository }}
         sep-tags: " "

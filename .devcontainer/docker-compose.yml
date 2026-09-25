@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   db:
-    image: postgres:9.6
+    image: postgres:9.6@sha256:caddd35b05cdd56c614ab1f674e63be778e0abdf54e71a7507ff3e28d4902698
     environment:
       POSTGRES_PASSWORD: kong
       POSTGRES_USER: kong

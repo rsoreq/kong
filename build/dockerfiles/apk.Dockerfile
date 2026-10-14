@@ -1,4 +1,4 @@
-ARG KONG_BASE_IMAGE=alpine:3.16
+ARG KONG_BASE_IMAGE=alpine:3.16@sha256:452e7292acee0ee16c332324d7de05fa2c99f9994ecc9f0779c602916a672ae4
 FROM $KONG_BASE_IMAGE
 
 LABEL maintainer="Kong Docker Maintainers <docker@konghq.com> (@team-gateway-bot)"

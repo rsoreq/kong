@@ -42,7 +42,7 @@ services:
       upgrade_tests:
 
   db_postgres:
-    image: postgres:9.5
+    image: postgres:18.7@sha256:9f4fd4aa918f52ae3d6f3b687f1de90d8f867cd4d520021545a9a50c120eae3b
     environment:
       POSTGRES_DBS: kong,kong_tests
       POSTGRES_USER: kong
